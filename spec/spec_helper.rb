@@ -1,9 +1,11 @@
 require 'simplecov'
 SimpleCov.start
 
+require File.expand_path("../../config/environment", __FILE__)
+
 require 'factory_girl_rails'
-require 'rails'
-require 'capybara/rspec'
+require 'rspec/rails'
+require 'capybara/rails'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
