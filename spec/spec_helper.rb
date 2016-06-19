@@ -1,8 +1,11 @@
 require 'simplecov'
 SimpleCov.start
 
-require 'support/factory_girl'
+require File.expand_path("../../config/environment", __FILE__)
+
+require 'factory_girl_rails'
 require 'rspec/rails'
+require 'capybara/rails'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -15,7 +18,7 @@ RSpec.configure do |config|
 
   config.filter_run :focus
   config.run_all_when_everything_filtered = true
-  config.disable_monkey_patching!
+  # config.disable_monkey_patching!
 
   if config.files_to_run.one?
     config.default_formatter = 'doc'
