@@ -1,0 +1,44 @@
+<table>
+  <thead>
+    <tr>
+      <th> Round # </th>
+      <% @scorecard.players.each do |player| %>
+      <th><%= player.name %></th>
+      <% end%>
+    </tr>
+    <tr>
+  </thead>
+  <tbody>
+    <% @scorecard.rounds.each do |round| %>
+      <tr>
+      <td><%= round.number %></td>
+      <% @scorecard.players.each do |player| %>
+        <td><%= player.scores.find_by(round: round).scores %></td>
+      <% end %>
+      </tr>
+    <% end %>
+
+    <tr>
+      <td><%= @scorecard.next_round %></td>
+      <%= form_tag game_scorecard_path do %>
+        <% @scorecard.new_scores.each do |new_score| %>
+          <%= fields_for 'new_scores[]', new_score do |s| %>
+            <td>
+              <%= s.hidden_field :round, :value => @scorecard.next_round %>
+              <%= s.hidden_field :player, :value => new_score.player.id %>
+              <%= s.number_field :scores %>
+            </td>
+          <% end %>
+        <% end %>
+        <%= submit_tag "Submit" %>
+      <% end %>
+    </tr>
+
+    <tr>
+      <td> Total </td>
+      <% @scorecard.players.each do |player| %>
+        <td><%= @scorecard.totals[player.name] %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

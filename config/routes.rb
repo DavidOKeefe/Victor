@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   resources :games, only: [:new, :create] do
     resources :players, only: [:index, :new, :create]
+    resource :scorecard, only: [:show, :create]
   end
 end
