@@ -18,7 +18,4 @@ class ScoreBuilder
       Score.create(player: player, round: round, scores: new_score[:scores])
     end
   end
-
-
-
 end

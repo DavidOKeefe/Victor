@@ -1,7 +1,5 @@
 class Scorecard
-  include ActiveModel::Model
-
-  attr_reader :game, :players, :rounds, :totals, :next_round
+  attr_reader :game, :players, :rounds, :totals
   attr_accessor :new_scores
 
   def self.build(params)
@@ -15,9 +13,12 @@ class Scorecard
     @game = Game.find(game_id)
     @players = game.players
     @rounds = game.rounds.order(:number)
-    @next_round = @rounds.size + 1
     @totals = {}
     @new_scores = []
+  end
+
+  def next_round
+    rounds.size + 1
   end
 
   def calculate_totals
@@ -32,6 +33,3 @@ class Scorecard
     end
   end
 end
-
-
-
