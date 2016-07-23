@@ -1,5 +1,1 @@
-<%= form_for [@game, @player] do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <%= form.submit "Submit" %>
-<% end %>
+<%= render @player %>
