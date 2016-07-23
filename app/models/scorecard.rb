@@ -13,18 +13,11 @@ class Scorecard
     @game = Game.find(game_id)
     @players = game.players
     @rounds = game.rounds.order(:number)
-    @totals = {}
     @new_scores = []
   end
 
   def next_round
     rounds.size + 1
-  end
-
-  def calculate_totals
-    players.each do |player|
-      totals[player.name] = player.scores.inject(0) { |sum, score| sum + score.scores }
-    end
   end
 
   def generate_new_scores

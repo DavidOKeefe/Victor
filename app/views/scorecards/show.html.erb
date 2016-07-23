@@ -37,7 +37,7 @@
     <tr>
       <td> Total </td>
       <% @scorecard.players.each do |player| %>
-        <td><%= @scorecard.totals[player.name] %></td>
+        <td><%= player.total_score %></td>
       <% end %>
     </tr>
   </tbody>

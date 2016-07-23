@@ -13,7 +13,6 @@ class ScoreBuilder
 
   def create_scores
     new_scores.each do |new_score|
-      byebug
       player = Player.find(new_score[:player])
       round = Round.find_or_create_by(game: game, number: new_score[:round])
       Score.create(player: player, round: round, scores: new_score[:scores].to_i)
