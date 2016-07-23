@@ -1,4 +1,4 @@
-<h1><%= @game.name %></h1>
+<h1><%= link_to @game.name, edit_game_path(@game) %></h1>
 
 <%= link_to "Add a Player", new_game_player_path %>
 
